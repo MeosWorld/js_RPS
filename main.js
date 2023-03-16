@@ -1,28 +1,30 @@
 
-function whoWins(playerChoice){    
+function whoWins(playerChoice = ""){
+
+    playerChoice = playerChoice.toLowerCase();
     compChoice = randomChoice();
 
     console.log(compChoice + " " + playerChoice);
-    switch(compChoice){
+    switch(playerChoice){
 
-        case playerChoice:
+        case compChoice:
             console.log("Draw");
             break;
 
         case "rock":
-            playerChoice === "paper"? playerWon() : enemyWon();
+            compChoice === "paper"? playerWon() : enemyWon();
             break;
         
         case "paper":
-            playerChoice === "scissors"? playerWon() : enemyWon();
+            compChoice === "scissors"? playerWon() : enemyWon();
             break;
         
         case "scissors":
-            playerChoice === "rock"? playerWon() : enemyWon();
+            compChoice === "rock"? playerWon() : enemyWon();
             break;
         
         default:
-            console.warn("Enemy incorrect Choice");
+            console.warn("Incorrect Choice");
     }
 }
 

@@ -1,10 +1,22 @@
+let playerPoints = 0;
+let compPoints = 0;
 
-function whoWins(playerChoice = ""){
+function game(){
+    playerPoints = 0;
+    compPoints = 0;
+
+    while (playerPoints < 3 && compPoints < 3){
+        whoWins();
+    }
+}
+
+function whoWins(){
+    playerChoice = prompt("Choose Rock, Paper or Scissors:")
 
     playerChoice = playerChoice.toLowerCase();
     compChoice = randomChoice();
 
-    console.log(compChoice + " " + playerChoice);
+    console.log("Your Choice: "+ playerChoice + " " +"Enemys Choice:"+ playerChoice);
     switch(playerChoice){
 
         case compChoice:
@@ -12,15 +24,15 @@ function whoWins(playerChoice = ""){
             break;
 
         case "rock":
-            compChoice === "paper"? playerWon() : enemyWon();
+            compChoice === "scissors"? playerWon() : compWon();
             break;
         
         case "paper":
-            compChoice === "scissors"? playerWon() : enemyWon();
+            compChoice === "rock"? playerWon() : compWon();
             break;
         
         case "scissors":
-            compChoice === "rock"? playerWon() : enemyWon();
+            compChoice === "paper"? playerWon() : compWon();
             break;
         
         default:
@@ -29,11 +41,11 @@ function whoWins(playerChoice = ""){
 }
 
 function playerWon(){
-    console.log("Player won!");
+    console.log("Player won! "+ ++playerPoints + ":"+ compPoints);
 }
 
-function enemyWon(){
-    console.log("Enemy won!");
+function compWon(){
+    console.log("Enemy won! "+ playerPoints +":"+ ++compPoints);
 }
 
 function randomChoice(){
